@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
+}
+
+h1 {
+  font-size: 6vw;
+  letter-spacing: 0.2em;
+}
+
+.subtitle {
+  margin-top: 20px;
+  opacity: 0.6;
+}
+
+h2 {
+  font-size: 3vw;
+  max-width: 600px;
+}
+
+.cta {
+  margin-top: 30px;
+  padding: 15px 30px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: white;
+  color: black;
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#screenFade {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 1.4s ease;
+}
+
+#screenFade.fade-out {
+  opacity: 0;
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
