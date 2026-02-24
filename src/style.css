@@ -23,13 +23,6 @@ canvas {
   z-index: 2;
 }
 
-.section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10%;
-}
 
 h1 {
   font-size: 6vw;
@@ -62,9 +55,14 @@ h2 {
 }
 
 .section {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
   opacity: 0;
-  transform: translateY(50px);
-  transition: 1s ease;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
 .section.visible {
