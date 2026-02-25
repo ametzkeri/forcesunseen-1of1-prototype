@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-export function initRenderer(canvas) {
+export function initRenderer(canvas, camera) {
 
   const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
@@ -8,13 +8,19 @@ export function initRenderer(canvas) {
     antialias: true
   })
 
-  // 🔥 Guardamos altura inicial real
-  const initialWidth = window.innerWidth
-  const initialHeight = window.innerHeight
+  function setSize() {
+    const width = window.innerWidth
+    const height = window.innerHeight
 
-  renderer.setSize(initialWidth, initialHeight)
+    renderer.setSize(width, height)
 
-  const isMobile = window.innerWidth < 768
+    camera.aspect = width / height
+    camera.updateProjectionMatrix()
+  }
+
+  setSize()
+
+  window.addEventListener('resize', setSize)
 
   renderer.physicallyCorrectLights = true
   renderer.outputColorSpace = THREE.SRGBColorSpace
@@ -22,19 +28,8 @@ export function initRenderer(canvas) {
   renderer.toneMappingExposure = 1
 
   renderer.setPixelRatio(
-    isMobile
-      ? Math.min(window.devicePixelRatio, 1.5)
-      : Math.min(window.devicePixelRatio, 2)
+    Math.min(window.devicePixelRatio, 2)
   )
-
-  // 🔥 SOLO recalcular si cambia el ancho (rotación real)
-  window.addEventListener('resize', () => {
-
-    if (window.innerWidth !== initialWidth) {
-      renderer.setSize(window.innerWidth, window.innerHeight)
-    }
-
-  })
 
   return renderer
 }
