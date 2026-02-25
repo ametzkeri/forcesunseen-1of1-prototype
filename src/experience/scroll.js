@@ -1,4 +1,4 @@
-export function initScroll(model, camera, initialZ) {
+export function initScroll(model, camera) {
 
   let maxScroll = 1
 
@@ -14,8 +14,10 @@ export function initScroll(model, camera, initialZ) {
     const scrollY = window.scrollY
     const progress = scrollY / maxScroll
 
-    // 🔥 SIN easing acumulativo
-    camera.position.z = 5 - progress * 3
+    // 🔥 Sin offset extraño
+    const baseZ = 5   // EXACTAMENTE el valor donde termina la intro
+    const scrollRange = 3
 
+    camera.position.z = baseZ - progress * scrollRange
   })
 }

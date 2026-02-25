@@ -178,6 +178,7 @@ function animate() {
     })
 
     if (clamped >= 1) {
+      camera.position.z = 5
       introFinished = true
     }
   }
