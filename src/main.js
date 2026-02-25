@@ -184,7 +184,18 @@ function animate() {
   }
 
   if (model && introFinished) {
-    model.rotation.y += (scrollProgress * Math.PI * 2 - model.rotation.y) * 0.08
+    const rotationStart = 0.15  // empieza a rotar después del 15% scroll
+const rotationRange = 0.7   // rango donde rota
+
+let adjustedProgress = 0
+
+if (scrollProgress > rotationStart) {
+  adjustedProgress = (scrollProgress - rotationStart) / rotationRange
+  adjustedProgress = Math.min(Math.max(adjustedProgress, 0), 1)
+}
+
+const targetRotation = adjustedProgress * Math.PI * 2
+model.rotation.y += (targetRotation - model.rotation.y) * 0.08
   }
 
   renderer.render(scene, camera)
