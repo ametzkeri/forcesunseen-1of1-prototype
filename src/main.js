@@ -39,7 +39,7 @@ const canvas = document.querySelector('#webgl')
 
 const scene = initScene()
 const camera = initCamera()
-const renderer = initRenderer(canvas)
+const renderer = initRenderer(canvas, camera)
 const lights = initLights(scene)
 
 let introProgress = 0
